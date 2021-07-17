@@ -1,9 +1,10 @@
 # SHINY: Código Violeta
 
 
-A partir del confinamiento por motivos del COVID-19 en Jalisco México se inicio a recabar y publicar lo que es el reporte ejecutivo del [Codigo Violeta](https://igualdad.jalisco.gob.mx/pdf/Reporte-Ejecutivo-Codigo-Violeta_pub_28feb2021_vf.pdf) que se actualiza cada semana y al mes se publica este reporte, parte del nombre recae a la medida de llamda al 911 (Emergencias) el cual brinda atención especializada al mencionarse el "código violeta" para la protección de mujeres y sus hijos e hijas que sientan en peligro.
+A partir del confinamiento por motivos del COVID-19 en Jalisco México se inicio a recabar y publicar lo que es el [reporte ejecutivo](https://igualdad.jalisco.gob.mx/pdf/Reporte-Ejecutivo-Codigo-Violeta_pub_28feb2021_vf.pdf) del Codigo Violeta que se actualiza cada semana y al mes se publica este reporte, parte del nombre recae a la medida para la atención prioritaria en casos de violencia familiar. En caso de que una mujer viva una emergencia por violencia o sienta que su vida o, en su caso, la de sus hijas e hijos corren riesgo, debe llamar al 911 y decir: [“Código Violeta”](https://igualdad.jalisco.gob.mx/quedate-segura/).
 
-También incluye lo que es delitos que pueden entenderse desde la perspectiva de género o que son más comunes de sufrir las mujeres, tales como:
+
+Los datos referidos tienen el objetivo de mostrar el comportamiento del fenómeno de la violencia de género contra las mujeres, adolescentes y niñas que habitan y transitan el estado de Jalisco, incluye lo que es delitos que pueden entenderse desde la perspectiva de género o que son más comunes de sufrir las mujeres, tales como:
 
 - Feminicidios
 - Violencia familiar
