@@ -11,6 +11,12 @@ Los datos referidos tienen el objetivo de mostrar el comportamiento del fenómen
 - Homicidios
 - Desaparición y no localización
 
+
+
+> Además incluye lo que son las carpetas de investigación y/o denuncias que se levantan ante violencias del ambito familiar, de pareja y por motivo de género. El objetivo principal de este proyecto es crear y aportar a la visualización y acceso a estos datos de interés nacional, a través de una herramienta dinamica que permita observar, descargar y compartir el contenido de esta plataforma.
+
+
+
 ```
 install.packages(c("shiny", "shinydashboard", "ggplot2", "dplyr", "mxmpas",
                  "plotly", "scales", "viridis", "leaflet"))
@@ -24,10 +30,6 @@ library(dplyr)
 #Más paqueterias que se encuentran en el script.
 
 ```
-
-
-> Además incluye lo que son las carpetas de investigación y/o denuncias que se levantan ante violencias del ambito familiar, de pareja y por motivo de género. El objetivo principal de este proyecto es crear y aportar a la visualización y acceso a estos datos de interés nacional, a través de una herramienta dinamica que permita observar, descargar y compartir el contenido de esta plataforma.
-
 
 ## Documentación
 La plataforma de datos abierto tiene la finalidad de mostrar el comportamiento del fenómeno de la violencia de género contra las mujeres, adolescentes y niñas que habitan y transitan el estado de Jalisco.
