@@ -33,12 +33,13 @@ La plataforma de datos abierto tiene la finalidad de mostrar el comportamiento d
 Se busca brindar una herramienta que facilite la Participación, Transparencia y Colaboración que permita promover la generación de información de valor.
 
 ## Sobre las fuentes de información
-La informacion presentada aquí se alimenta los datos de Fiscalía del estado de Jalisco.
-En el apartado de violencia de género integra la información de carpetas de investigación del Secretariado Ejecutivo del Sistema Nacional de Seguridad Pública (SESNSP).
+Las bases de datos son de acceso publico y pueden solicitarlas a la SISEMH de sus reportes ejecutivos del [Codigo Violeta](https://igualdad.jalisco.gob.mx/pdf/Reporte-Ejecutivo-Codigo-Violeta_pub_28feb2021_vf.pdf) que se alimenta de los datos de Fiscalía del estado de Jalisco.
+En el apartado de violencia de género integra la información de carpetas de investigación del [Secretariado Ejecutivo del Sistema Nacional de Seguridad Pública (SESNSP)](https://www.gob.mx/sesnsp/acciones-y-programas/datos-abiertos-de-incidencia-delictiva).
 
 
 
 
 
 
-Proyecto colaborativo entre Macarena Zappe y Nancy Manzo.
+### Proyecto colaborativo entre Macarena Zappe y Nancy Manzo.
+
