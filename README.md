@@ -26,7 +26,7 @@ library(shinydashboard)
 library(shinythemes)
 library(ggplot2)
 library(dplyr)
-
+ 
 #Más paqueterias que se encuentran en el script.
 
 ```
