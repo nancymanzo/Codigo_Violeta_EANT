@@ -1,6 +1,7 @@
 #Código 
-options(encoding = 'UTF-8')
+options(encoding = 'UTF-8') #con esta línea nos deja agregar las "ñ" y acentos en la red con shiny.
 
+#Paqueterías
 library(shiny)
 library(shinydashboard)
 library(shinythemes)
@@ -28,14 +29,12 @@ library(shinybusy)
 library(ggnewscale)
 library(reshape)
 library(rebus)
-
 library(rgdal)
 library(graphics)
 library(utf8)
 
-# font_add("Nutmeg", "Nutmeg-Light.ttf")
 
-
+#Cargamos el excel que se usa para actualizar el codigo violeta en las ppt.
 
 slide2 <- read_excel("CodigoVioleta_bases.xlsx", sheet = "Diapositiva 2")
 slide3 <- read_excel("CodigoVioleta_bases.xlsx", sheet = "Diapositiva 3")
@@ -61,7 +60,7 @@ victimas_nacional <- read_excel("CodigoVioleta_bases.xlsx", sheet = "victimas_na
 
 
 ##################
-#Mapa hexagonales
+#Mapas hexagonales con mxmaps
 
 data(df_mxstate_2020) #Base de una paquetería que contiene la información del Censo Nacional y que es necesaria para ponderar feminicidios por poblacion
 
@@ -69,7 +68,6 @@ slide18<-merge(df_mxstate_2020, slide18,
                by.y="Clave de entidad",
                by.x="region")
 
-#merge_1$value<- merge_1$tot_acu
 
 #Mapa hexagonal
 mxmaps::mxhexbin_choropleth(slide18, num_colors = 1) +  
@@ -94,12 +92,10 @@ mxmaps::mxhexbin_choropleth(slide18, num_colors = 1) +
 
 
 
-
+#Merge para juntar las bases de delitos con la de población
 slide19<-merge(df_mxstate_2020, slide19,
                by.y="Clave de entidad",
                by.x="region")
-
-#merge_1$value<- merge_1$tot_acu
 
 #Mapa hexagonal
 mxhexbin_choropleth(slide19, num_colors = 1) +  
@@ -124,7 +120,7 @@ mxhexbin_choropleth(slide19, num_colors = 1) +
 
 
 
-
+#Aquí inicia lo que es la conceptualización de los delitos por regiones de Jalisco (esto no se visualiza en la shiny), es para un mañana.
 
 
 # jalisco <- read.csv("jalisco.csv", encoding="UTF-8")
@@ -189,6 +185,7 @@ mxhexbin_choropleth(slide19, num_colors = 1) +
 #                     "Zapotlanejo")
 # 
 # 
+# Suma de los delitos por regiones:
 # regiones<- jalisco %>% 
 #   mutate(Region = case_when(
 #     Municipio %in% `Región Norte` ~ "Región Norte",
@@ -227,6 +224,8 @@ mxhexbin_choropleth(slide19, num_colors = 1) +
 # 
 # write.csv(regiones, "regiones.csv")
 # 
+#
+# La visualización de los años 2015 a 2021 de los delitos por regiones.
 # ggplot(regiones)+
 #   aes(x = as.factor(Año) , y = tot_acu, fill = Region) +
 #   geom_col() +
@@ -248,6 +247,8 @@ mxhexbin_choropleth(slide19, num_colors = 1) +
 # 
 # library(viridis)
 # 
+#
+# Calis de mapa con algunos formatos de colores
 # ggplot(regiones)+
 #   aes(x = as.factor(Año) , y = tot_acu, fill = Region) +
 #   geom_col() +
@@ -326,12 +327,12 @@ mxhexbin_choropleth(slide19, num_colors = 1) +
 # 
 # 
 # 
-# 
+# Aquí acaba lo de regiones.
 
 
 ################################################################################################################
 
-
+# Inicio de UI
 
 ui <- navbarPage("Datos abiertos",
                  theme = "mytheme.css",
@@ -345,7 +346,7 @@ ui <- navbarPage("Datos abiertos",
                                      #                        font-size: 24px;
                                      #                        font-style: italics;
                                      #                        font-family: Nutmeg;
-                                     #                        }")),
+                                     #                        }")),  #Con esto intentabamos cambiar la fuente :(
                                      tabsetPanel(
                                        tabPanel(
                                          "Violencia familiar semanal por zonas del AMG",
@@ -531,16 +532,16 @@ ui <- navbarPage("Datos abiertos",
 ################################################################################################################
 
 
-############################################
-
+# Aquí inicia el server
 server <- function(input, output, session){
   
+ #  Para visualizar base de datos en DT
   output$table1 <- DT::renderDataTable({
     slide2
   }, filter='top', 
   options = list(pageLength = 10, scrollX=TRUE, autoWidth = TRUE))
   
-  ## Download Buttons ----
+  #Botones de descargar 
   output$downloadData <- downloadHandler(
     filename = 'Download.csv',
     content = function(file) {
@@ -550,7 +551,7 @@ server <- function(input, output, session){
 
 
   
-  
+ # Aquí inicia el cuadro de bienvenida
   observeEvent("", {
     showModal(modalDialog(
       includeHTML("intro.html"),
@@ -565,6 +566,8 @@ server <- function(input, output, session){
     removeModal()
   })
   
+  
+ ##Aquí inician los botones para los reactives de la shiny
   
   #Botones para slide 2    
   output$semana <- renderUI({
@@ -583,7 +586,6 @@ server <- function(input, output, session){
   })
   
   
-  
   #base reactiva para slide 2
   data_slide2 <- reactive({
     
@@ -593,6 +595,7 @@ server <- function(input, output, session){
   })
   
   
+  #Aquí inician los graficos para slide 2, con y sin etiqueta de datos.
   output$grafico2 <- renderPlotly ({
     
     if (input$value2 == "Sin etiqueta de datos") {
@@ -686,8 +689,10 @@ Las cifras pueden variar con el tiempo dado que son registros de carpetas de inv
       filter(if(!is.null(input$semana_3))         Semana %in% input$semana_3     else Semana != "",
              if(!is.null(input$sexo_3))             Sexo %in% input$sexo_3       else Sexo != "",)
   })
-  
-  
+
+             
+#Aquí inician los graficos para slide 3, con y sin etiqueta de datos.
+            
   output$grafico3 <- renderPlotly ({
     
     if (input$value3 == "Sin etiqueta de datos") {
@@ -767,6 +772,8 @@ Las cifras pueden variar con el tiempo dado que son registros de carpetas de inv
       filter(if(!is.null(input$anio_4))         Anio %in% input$anio_4     else Anio != "")
   })
   
+#Aquí inician los graficos para slide 4, con y sin etiqueta de datos.
+
   
   output$grafico4 <- renderPlotly ({
     
@@ -852,7 +859,8 @@ Fuente: Elaboración propia con datos de la Fiscalía del estado de Jalisco.",
   #          Anio=factor(Anio,
   #                      levels=c("2021", "2020", "2019")))
   
-  
+    #Aquí inician los graficos para slide 5, con y sin etiqueta de datos.
+
   
   output$grafico5 <- renderPlotly ({
     
@@ -954,31 +962,6 @@ La unidad de medida son carpetas de investigación.",
   
   
   
-  #Grafico slide 6
-  ggplot(slide6) +
-    aes(x = Semana, y = Total, colour = Zona, 
-        text = paste("Número de semana: ", Semana, 
-                     "\nZona: ", Zona,
-                     "\nTotal de reportes: ", Total, sep="")) +
-    geom_line(size = 0.5) +
-    geom_point()+
-    scale_y_continuous(labels = scales::comma) +
-    scale_color_manual(values = c(
-      AMG = "#7E3794",
-      Estatal = "#C91682",
-      Interior = "#D98CBC")) +
-    labs(title="Total de reportes 911 durante COVID - 19.",
-         x="Semana",
-         y="Total",
-         fill="Rango de edad",
-         caption = "Fuente: elaboración propia con datos de Escudo Urbano C5.
-Los reportes son la sumatoria de tres categorías señaladas en el Catálogo Nacional: Violencia contra la mujer, violencia de pareja y violencia familiar. ") +
-    theme_minimal()+
-    theme(plot.title = element_text(size = 16L, hjust = 0.5), 
-          plot.caption = element_text(size = 12L, hjust = 0))+
-    theme(text=element_text(size=12,family="Nutmeg"),
-          axis.text.x = element_text(angle = 40))
-  
   
   #
   #
@@ -1074,7 +1057,7 @@ Los reportes son la sumatoria de tres categorías señaladas en el Catálogo Nac
 
 shinyApp(ui = ui, server = server)
 
-
+#Aquí más códgio que aún no se añade a la shiny.
 
 # #slide7
 # 
