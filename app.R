@@ -389,7 +389,7 @@ ui <- navbarPage("Datos abiertos",
                                                                  label = "Sexo",
                                                                  choices = sort(unique(slide3$Sexo)),
                                                                  multiple = TRUE
-                                                               ),
+                                                               ), 
                                                                selectInput("value3", "Seleccione alguna opción" , 
                                                                            choices = c("Sin etiqueta de datos", "Con etiqueta de datos"), 
                                                                            selected = NULL ,  multiple = FALSE, selectize = TRUE)),
