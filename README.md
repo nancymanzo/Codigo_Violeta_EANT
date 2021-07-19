@@ -45,4 +45,5 @@ En el apartado de violencia de género integra la información de carpetas de in
 
 
 #### Proyecto colaborativo entre Macarena Zappe y Nancy Manzo.
+https://rladiesgdl.shinyapps.io/plataforma_subse/
 
