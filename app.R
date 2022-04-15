@@ -1,32 +1,4 @@
-Skip to content
-Search or jump to…
-Pull requests
-Issues
-Marketplace
-Explore
- 
-@nancymanzo 
-nancymanzo
-/
-Codigo_Violeta_EANT
-Public
-Code
-Issues
-Pull requests
-Actions
-Projects
-Wiki
-Security
-Insights
-Settings
-Codigo_Violeta_EANT/app.R
-@nancymanzo
-nancymanzo Código de comandos en R
-Latest commit 146cf16 on 19 Jul 2021
- History
- 1 contributor
-2782 lines (2590 sloc)  123 KB
-   
+
 #Código 
 options(encoding = 'UTF-8') #con esta línea nos deja agregar las "ñ" y acentos en la red con shiny.
 
